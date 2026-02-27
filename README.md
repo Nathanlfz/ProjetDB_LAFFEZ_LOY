@@ -1,12 +1,40 @@
-### **Voici le prompt que nous avons envoyé.**
+# Mini-projet – Conception d’une base de données (MERISE)
+---
+# Introduction
+
+Dans le cadre de ce mini-projet, nous devions concevoir une base de données en appliquant la méthode MERISE.
+
+Étant passionnés de cyclisme, nous avons choisi de modéliser la base de données d’une équipe professionnelle (comparable a un club de sport quelconque) telle que UAE Team Emirates ou INEOS Grenadiers.
+
+L’objectif était de créer une base de données permettant de gérer une équipe sur plusieurs aspects :
+
+- les coureurs et leurs contrats
+
+- le staff
+
+- les courses et les étapes
+
+- les participations au course 
+
+- le matériel (vélos, composants, interventions)
+
+- l’entraînement
+
+- le suivi médical
+
+- les sponsors
+
+- la logistique
+
+Voici notre prompt de départ :
+
+Prompt envoyé à l’IA
 Tu travailles dans le domaine du cyclisme. Ton organisation a comme activité d’être une équipe professionnel de cyclisme évoluant en worldtour UCI. C’est une organisation comme UAE EMIRATES , JUMBO VISAME LEASE A BIKE, INEOS GRENADIER , VAN RYSEL AG2R, MOVISTAR.Voici une liste non exhaustive des données a classer, n'hesite pas à l'ameliorer et à l'enrichir: Velo, coureur avec leurs composant differents(roue,transmission etc) leur type (CLM, route,vtt ,cyclo), l'ensemble du staff tel que les mecano pour les velo, les dieteticien, coach , directeur de course, la liste des differentes course avec les coureur selection les pays/lieu et les differentes étape avec leur type(CLM etc ),la gestion des coureurs avec leur contrat, les sponsors de l'equipe, les données mediacal et les données d'entrainement pour une preparation au top, avec par exemple les differents stage de preparation effectué ou autre, les données logistique avec les hebergement pour les courses selon les étape, les transport et leur materiel dispo et les vehicules utilisé pour chaque course. Inspire-toi de ce que peuvent faires les équipes world TOUR UCI . Ton organisation veut appliquer MERISE pour concevoir un système d'information. Tu es chargé de la partie analyse, c’est-à-dire de collecter les besoins auprès de l’entreprise. Elle a fait appel à un étudiant en ingénierie informatique pour réaliser ce projet, tu dois lui fournir les informations nécessaires pour qu’il applique ensuite lui-même les étapes suivantes de conception et développement de la base de données. D’abord, établis les règles de gestions des données de ton organisation, sous la forme d'une liste à puce. Elle doit correspondre aux informations que fournit quelqu’un qui connaît le fonctionnement de l’entreprise, mais pas comment se construit un système d’information. Ensuite, à partir de ces règles, fournis un dictionnaire de données brutes avec les colonnes suivantes, regroupées dans un tableau : signification de la donnée, type, taille en nombre de caractères ou de chiffres. Il doit y avoir entre 25 et 35 données. Il sert à fournir des informations supplémentaires sur chaque donnée (taille et type) mais sans a priori sur comment les données vont être modélisées ensuite. Fournis donc les règles de gestion et le dictionnaire de données.
+# Discussion avec l’IA générative
 
 
 
-
-
-
-## **Voici ça reponse**
+## **Voici ça reponse à notre prompt de départ**
 
 Très bien. Je vais me placer comme si j’étais responsable opérationnel d’une équipe WorldTour comparable à UAE Team Emirates, Team Visma | Lease a Bike, INEOS Grenadiers, Decathlon AG2R La Mondiale Team ou Movistar Team.
 
@@ -812,15 +840,13 @@ Si tu veux, prochaine étape possible :
     
 
 Tu veux qu’on bascule en mode architecte MERISE ?
+# Notre travail et MCD
 
+Lors de l’échange avec l’IA, les règles proposées restaient trop générales, pas assez contraignantes et ne donnaient pas suffisamment d’informations pour construire correctement un MCD cohérent.
 
+Le dictionnaire de données n’était pas assez fourni pour obtenir un modèle comme on le voulait avec tous les aspects que l'on voulait traité. Nous nous sommes donc permis de prendre quelques libertés en ajoutant certaines règles métier et complétant le dictionnaire avec des attributs supplémentaires afin de rendre le modèle plus complet et plus cohérent.
 
-
-# Nous trouvons qu'il n'a pas repondu de facon tres pertinente sur les regles metier...
-
-
-
-
-#voici notre mcd 
+Voici notre travail final avec que le MCD réalisé.
 <img width="2102" height="1144" alt="image" src="https://github.com/user-attachments/assets/1fb5b843-67b2-447a-85ee-c4afd38ff69b" />
 
+Notre MCD comporte comme demandé une association ternaire, une association récursive ainsi qu’une entité faible dépendante d’une entité forte.
