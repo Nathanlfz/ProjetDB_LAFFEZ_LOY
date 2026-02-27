@@ -817,3 +817,10 @@ Tu veux qu’on bascule en mode architecte MERISE ?
 
 
 # Nous trouvons qu'il n'a pas repondu de facon tres pertinente sur les regles metier...
+
+
+
+
+#voici notre mcd 
+<img width="2102" height="1144" alt="image" src="https://github.com/user-attachments/assets/1fb5b843-67b2-447a-85ee-c4afd38ff69b" />
+
