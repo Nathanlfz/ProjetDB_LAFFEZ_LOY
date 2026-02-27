@@ -262,490 +262,91 @@ Des membres du staff peuvent conduire les véhicules.
 ----------
 
 # 2️⃣ DICTIONNAIRE DE DONNÉES BRUTES
-Signification de la donnée
 
-Type
-
-Taille
-
-ID_coureur
-
-Entier
-
-10 chiffres
-
-Nom
-
-Texte
-
-50 caractères
-
-Prenom
-
-Texte
-
-50 caractères
-
-Date_ (date de naissance)
-
-Date
-
-10 caractères
-
-Nationalité
-
-Texte
-
-30 caractères
-
-Specialité
-
-Texte
-
-30 caractères
-
-discipline_secondaire
-
-Texte
-
-30 caractères
-
-Numero_UCI
-
-Entier
-
-10 chiffres
-
-ID_velo
-
-Booléen / Identifiant
-
-10
-
-Numero_série
-
-Texte
-
-30 caractères
-
-Type_velo
-
-Texte
-
-50 caractères
-
-Taille_cadre
-
-Entier
-
-3 chiffres
-
-Marque
-
-Texte
-
-50 caractères
-
-Modele
-
-Texte
-
-50 caractères
-
-ID_composant
-
-Entier
-
-10 chiffres
-
-km_cumule
-
-Entier
-
-10 chiffres
-
-Type_composant
-
-Texte
-
-50 caractères
-
-ID_course
-
-Entier
-
-10 chiffres
-
-nom_course
-
-Texte
-
-50 caractères
-
-Date_fin
-
-Date
-
-10 caractères
-
-Pays
-
-Texte
-
-50 caractères
-
-date_debut
-
-Date
-
-10 caractères
-
-ID_staff
-
-Texte
-
-50 caractères
-
-Nom_staff
-
-Texte
-
-50 caractères
-
-Prenom_staff
-
-Texte
-
-50 caractères
-
-ID_staff_1
-
-Texte
-
-50 caractères
-
-ID_sponsor
-
-Entier
-
-10 chiffres
-
-Nom_sponsor
-
-Texte
-
-50 caractères
-
-Id_seance
-
-Texte
-
-50 caractères
-
-date_seance
-
-Date
-
-10 caractères
-
-puissance_moyenne
-
-Entier
-
-5 chiffres
-
-duree_seance
-
-Texte
-
-50 caractères
-
-ID_role
-
-Entier
-
-10 chiffres
-
-Metier
-
-Texte
-
-50 caractères
-
-Id_equipe
-
-Entier
-
-10 chiffres
-
-nom_equipe
-
-Texte
-
-50 caractères
-
-code_uci_equipe
-
-Entier
-
-10 chiffres
-
-ID_dossier
-
-Entier
-
-10 chiffres
-
-Date_examen
-
-Date
-
-10 caractères
-
-VO2max
-
-Décimal
-
-15 dont 2 décimales
-
-Poids
-
-Entier
-
-3 chiffres
-
-Blessure
-
-Texte
-
-50 caractères
-
-Date_reprise
-
-Date
-
-10 caractères
-
-ID_vehicule
-
-Entier
-
-10 chiffres
-
-Type
-
-Texte
-
-50 caractères
-
-Immatriculation
-
-Texte
-
-50 caractères
-
-Capacité
-
-Entier
-
-3 chiffres
-
-ID_stage
-
-Entier
-
-10 chiffres
-
-Lieu
-
-Texte
-
-50 caractères
-
-Date_debut (stage)
-
-Date
-
-10 caractères
-
-Date_fin (stage)
-
-Texte
-
-50 caractères
-
-Spécialité_altitude_pavé_...
-
-Texte
-
-50 caractères
-
-classement_etape
-
-Entier
-
-4 chiffres
-
-temps
-
-Heure (TIME)
-
-8 caractères
-
-ecart
-
-Heure (TIME)
-
-8 caractères
-
-points_montagne
-
-Entier
-
-4 chiffres
-
-points_sprint
-
-Texte
-
-50 caractères
-
-id_contrat
-
-Entier
-
-10 chiffres
-
-salaire_annuel
-
-Décimal
-
-15 dont 2 décimales
-
-ID_etape
-
-Entier
-
-10 chiffres
-
-Num_etape
-
-Entier
-
-3 chiffres
-
-type_etape
-
-Texte
-
-50 caractères
-
-Distance
-
-Décimal
-
-15 dont 2 décimales
-
-Classement_final
-
-Texte
-
-50 caractères
-
-statut
-
-Texte
-
-50 caractères
-
-date_afffectation
-
-Date
-
-10 caractères
-
-Date_restitutions
-
-Date
-
-10 caractères
-
-Date_installation
-
-Date
-
-10 caractères
-
-Date_retrait
-
-Date
-
-10 caractères
-
-Date_intervention
-
-Date
-
-10 caractères
-
-Type_intervention
-
-Texte
-
-50 caractères
-
-Description
-
-Texte
-
-50 caractères
-
-Date_debut (financement)
-
-Texte
-
-50 caractères
-
-Date_fin (financement)
-
-Texte
-
-50 caractères
-
-Montant_contrat
-
-Texte
-
-50 caractères
-
-Date_inscription
-
-Date
-
-10 caractères
-
-Statut_invité_automatique_WT_
-
-Texte
-
-50 caractères
-
-Directeur_sportif_responsable
-
-Texte
-
-50 caractères
-
-date_intervention (intervenir)
-
-Date
-
-10 caractères
-
-pieces_changees
-
-Texte
-50 caractères
+(on a modifié l'affiche du tableau pour une meilleur visibilité)
+
+| Signification de la donnée | Type | Taille |
+|----------------------------|------|--------|
+| ID_coureur | Entier | 10 chiffres |
+| Nom | Texte | 50 caractères |
+| Prenom | Texte | 50 caractères |
+| Date_ (date de naissance) | Date | 10 caractères |
+| Nationalité | Texte | 30 caractères |
+| Specialité | Texte | 30 caractères |
+| discipline_secondaire | Texte | 30 caractères |
+| Numero_UCI | Entier | 10 chiffres |
+| ID_velo | Booléen / Identifiant | 10 |
+| Numero_série | Texte | 30 caractères |
+| Type_velo | Texte | 50 caractères |
+| Taille_cadre | Entier | 3 chiffres |
+| Marque | Texte | 50 caractères |
+| Modele | Texte | 50 caractères |
+| ID_composant | Entier | 10 chiffres |
+| km_cumule | Entier | 10 chiffres |
+| Type_composant | Texte | 50 caractères |
+| ID_course | Entier | 10 chiffres |
+| nom_course | Texte | 50 caractères |
+| Date_fin | Date | 10 caractères |
+| Pays | Texte | 50 caractères |
+| date_debut | Date | 10 caractères |
+| ID_staff | Texte | 50 caractères |
+| Nom_staff | Texte | 50 caractères |
+| Prenom_staff | Texte | 50 caractères |
+| ID_staff_1 | Texte | 50 caractères |
+| ID_sponsor | Entier | 10 chiffres |
+| Nom_sponsor | Texte | 50 caractères |
+| Id_seance | Texte | 50 caractères |
+| date_seance | Date | 10 caractères |
+| puissance_moyenne | Entier | 5 chiffres |
+| duree_seance | Texte | 50 caractères |
+| ID_role | Entier | 10 chiffres |
+| Metier | Texte | 50 caractères |
+| Id_equipe | Entier | 10 chiffres |
+| nom_equipe | Texte | 50 caractères |
+| code_uci_equipe | Entier | 10 chiffres |
+| ID_dossier | Entier | 10 chiffres |
+| Date_examen | Date | 10 caractères |
+| VO2max | Décimal | 15 dont 2 décimales |
+| Poids | Entier | 3 chiffres |
+| Blessure | Texte | 50 caractères |
+| Date_reprise | Date | 10 caractères |
+| ID_vehicule | Entier | 10 chiffres |
+| Type | Texte | 50 caractères |
+| Immatriculation | Texte | 50 caractères |
+| Capacité | Entier | 3 chiffres |
+| ID_stage | Entier | 10 chiffres |
+| Lieu | Texte | 50 caractères |
+| Date_debut (stage) | Date | 10 caractères |
+| Date_fin (stage) | Texte | 50 caractères |
+| Spécialité_altitude_pavé_... | Texte | 50 caractères |
+| classement_etape | Entier | 4 chiffres |
+| temps | Heure (TIME) | 8 caractères |
+| ecart | Heure (TIME) | 8 caractères |
+| points_montagne | Entier | 4 chiffres |
+| points_sprint | Texte | 50 caractères |
+| id_contrat | Entier | 10 chiffres |
+| salaire_annuel | Décimal | 15 dont 2 décimales |
+| ID_etape | Entier | 10 chiffres |
+| Num_etape | Entier | 3 chiffres |
+| type_etape | Texte | 50 caractères |
+| Distance | Décimal | 15 dont 2 décimales |
+| Classement_final | Texte | 50 caractères |
+| statut | Texte | 50 caractères |
+| date_afffectation | Date | 10 caractères |
+| Date_restitutions | Date | 10 caractères |
+| Date_installation | Date | 10 caractères |
+| Date_retrait | Date | 10 caractères |
+| Date_intervention | Date | 10 caractères |
+| Type_intervention | Texte | 50 caractères |
+| Description | Texte | 50 caractères |
+| Date_debut (financement) | Texte | 50 caractères |
+| Date_fin (financement) | Texte | 50 caractères |
+| Montant_contrat | Texte | 50 caractères |
+| Date_inscription | Date | 10 caractères |
+| Statut_invité_automatique_WT_ | Texte | 50 caractères |
+| Directeur_sportif_responsable | Texte | 50 caractères |
+| date_intervention (intervenir) | Date | 10 caractères |
+| pieces_changees | Texte | 50 caractères |
 ----------
 
 # 🎯 Pourquoi ce modèle peut convenir pour une équipe 
