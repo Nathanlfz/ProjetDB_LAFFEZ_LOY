@@ -1,5 +1,6 @@
 # Mini-projet – Conception d’une base de données (MERISE)
 ---
+Il y a d'autres .md dans le projet qui correspondent à d'autres parties comme le scénario ou l'insertion des données
 # Introduction
 
 Dans le cadre de ce mini-projet, nous devions concevoir une base de données en appliquant la méthode MERISE.
