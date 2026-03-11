@@ -850,3 +850,33 @@ Voici notre travail final avec que le MCD réalisé.
 <img width="2102" height="1144" alt="image" src="https://github.com/user-attachments/assets/1fb5b843-67b2-447a-85ee-c4afd38ff69b" />
 
 Notre MCD comporte comme demandé une association ternaire, une association récursive ainsi qu’une entité faible dépendante d’une entité forte.
+
+
+# Voici notre MLD généré depuis looping 
+```
+Coureur = (ID_coureur INT, Nom VARCHAR(50), prénom VARCHAR(50), Date_ DATE, Nationalité VARCHAR(30), Specialité VARCHAR(30), discipline_secondaire VARCHAR(30), Numero_UCI INT);
+Vélo = (ID_velo INT, Numero_série VARCHAR(30), Type_velo VARCHAR(50), Taille_cadre INT, Marque VARCHAR(50), Modele VARCHAR(50));
+Composant = (ID_composant INT, km_cumule INT, Type_composant VARCHAR(50));
+Course = (ID_course INT, nom_course VARCHAR(50), Date_fin DATE, Pays VARCHAR(50), date_debut DATE);
+Staff = (ID_staff INT, Nom_staff VARCHAR(50), Prenom_staff VARCHAR(50), #ID_staff_1*);
+Sponsor = (ID_sponsor INT, Nom_sponsor VARCHAR(50));
+Seance = (Id_seance VARCHAR(50), date_seance DATE, puissance_moyenne INT, duree_seance VARCHAR(50), distance INT, BPM INT, #ID_coureur);
+Etape = (#ID_course, ID_etape INT, Num_etape INT, type_etape VARCHAR(50), Distance DECIMAL(15,2));
+Role = (ID_role INT, Metier VARCHAR(50));
+Equipe = (Id_equipe INT, nom_equipe VARCHAR(50), code_uci_equipe INT);
+Dossier_Medical = (ID_dossier INT, Date_examen DATE, VO2max DECIMAL(15,2), Poids INT, Blessure VARCHAR(50), Date_reprise DATE, #ID_coureur);
+Vehicule = (ID_vehicule INT, Type VARCHAR(50), Immatriculation VARCHAR(50), Capacité INT);
+Stage = (ID_stage INT, Lieu VARCHAR(50), Date_debut DATE, Date_fin DATE, Altitude INT, Spécialité_ VARCHAR(50));
+Contrat = (id_contrat INT, date_debut DATE, Date_fin DATE, salaire_annuel DECIMAL(15,2), #Id_equipe, #ID_coureur);
+Mobiliser = (#ID_course, #ID_staff, #ID_role);
+Participer = (#ID_coureur, #ID_course, Classement_final INT, statut VARCHAR(50));
+Affecter = (#ID_coureur, #ID_velo, date_afffectation DATE, Date_restitutions DATE);
+Installation = (#ID_velo, #ID_composant, Date_installation DATE, Date_retrait DATE);
+Suivre = (#ID_coureur, #ID_staff, Date_intervention DATE, Type_intervention VARCHAR(50), Description VARCHAR(50));
+Financer = (#ID_sponsor, #Id_equipe, Date_debut DATE, Date_fin DATE, Montant_contrat DECIMAL(15,2));
+s_inscrit = (#ID_course, #Id_equipe, Date_inscription DATE, Statut_invité_automatique_WT_ VARCHAR(50), Directeur_sportif_responsable VARCHAR(50));
+Intervienir = (#ID_velo, #ID_staff, date_intervention DATE, Type_intervention VARCHAR(50), pieces_changees VARCHAR(50));
+Conduire = (#ID_staff, #ID_vehicule);
+Participer_Stage = (#ID_coureur, #ID_stage);
+Necessiter = (#ID_course, #ID_vehicule);
+```
