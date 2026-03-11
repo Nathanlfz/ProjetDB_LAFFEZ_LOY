@@ -74,11 +74,9 @@ J'ai appliqué votre consigne d'optimisation de la répartition :
 - Toutes vos contraintes (`CHECK`, clés primaires/étrangères) sont rigoureusement respectées.
 
 ```sql
--- ==============================================================================
--- NIVEAU 0 : Tables sans clés étrangères
--- ==============================================================================
 
--- 1. Table Equipe (5 équipes au sein de la nouvelle organisation fictive NovaTech)
+use cyclisme_equipe_db;
+
 INSERT INTO Equipe (Id_equipe, nom_equipe, code_uci_equipe) VALUES
 (1, 'NovaTech Factory Racing (WT)', 101),
 (2, 'NovaTech Women Elite', 102),
@@ -106,7 +104,7 @@ INSERT INTO Role (ID_role, Metier) VALUES
 (8, 'Chauffeur');
 
 -- 4. Table Stage (5 stages pour couvrir toutes les sections)
-INSERT INTO Stage (ID_stage, Lieu, Date_debut, Date_fin, Altitude, Spécialité_) VALUES
+INSERT INTO Stage (ID_stage, Lieu, Date_debut, Date_fin, Altitude, Specialite) VALUES
 (1, 'Tenerife (Teide)', '2026-01-10', '2026-01-25', 2100, 'Montagne'),
 (2, 'Calpe (Espagne)', '2026-01-05', '2026-01-15', 50, 'Général WT'),
 (3, 'Girona (Espagne)', '2026-02-01', '2026-02-14', 100, 'Volume U23'),
@@ -114,7 +112,7 @@ INSERT INTO Stage (ID_stage, Lieu, Date_debut, Date_fin, Altitude, Spécialité_
 (5, 'Banyoles (Espagne)', '2026-02-15', '2026-02-25', 200, 'VTT XC');
 
 -- 5. Table Vehicule (8 véhicules pour la logistique)
-INSERT INTO Vehicule (ID_vehicule, Type, Immatriculation, Capacité) VALUES
+INSERT INTO Vehicule (ID_vehicule, Type, Immatriculation, Capacite) VALUES
 (1, 'Bus Impérial WT', 'NV-100-WT', 40),
 (2, 'Bus Women Elite', 'NV-200-WE', 35),
 (3, 'Camion Atelier', 'NV-300-CA', 4),
@@ -164,7 +162,7 @@ INSERT INTO Staff (ID_staff, Nom_staff, Prenom_staff, ID_staff_1) VALUES
 (10, 'Laurent', 'Jacques', 2);       -- Chauffeur
 
 -- 9. Table Coureur (55 Coureurs : Les stars mondiales + Custom + Jeunes/VTT)
-INSERT INTO Coureur (ID_coureur_, Nom, prénom, Date_, Nationalité, Specialité, discipline_secondaire, Numero_UCI) VALUES
+INSERT INTO Coureur (ID_coureur, Nom, prenom, Date_naissance, Nationalite, Specialite, discipline_secondaire, Numero_UCI) VALUES
 -- Vos coureurs personnalisés (Transférés WT)
 (1, 'Loy', 'Clément', '2001-05-14', 'France', 'Puncheur', 'Classiques', 1000000001),
 (2, 'Laffez', 'Nathan', '2002-08-22', 'France', 'Montagne', 'Général', 1000000002),
@@ -228,7 +226,7 @@ INSERT INTO Coureur (ID_coureur_, Nom, prénom, Date_, Nationalité, Specialité
 (55, 'Alvarado', 'Ceylin', '1998-08-06', 'Pays-Bas', 'Cyclo-cross', 'VTT', 1000000055);
 
 -- 10. Table Vélo_ (55 Vélos : 1 pour chaque coureur, fournis par AeroBikes)
-INSERT INTO Vélo_ (ID_velo, Numero_série, Type_velo, Taille_cadre, Marque, Modele) VALUES
+INSERT INTO Velo (ID_velo, Numero_serie, Type_velo, Taille_cadre, Marque, Modele) VALUES
 (1, 'AERO-R-01', 'Route', 54, 'AeroBikes', 'Nova Pro'),
 (2, 'AERO-R-02', 'Route', 52, 'AeroBikes', 'Nova Pro'),
 (3, 'AERO-R-03', 'Route', 54, 'AeroBikes', 'Nova Pro'),
@@ -297,7 +295,7 @@ INSERT INTO Vélo_ (ID_velo, Numero_série, Type_velo, Taille_cadre, Marque, Mod
 -- Equipe 3 (U23) : 33 à 42
 -- Equipe 4 (U19) : 43 à 49
 -- Equipe 5 (Off-Road) : 50 à 55
-INSERT INTO Contrat (id_contrat, date_debut, Date_fin, salaire_annuel, Id_equipe, ID_coureur_) VALUES
+INSERT INTO Contrat (id_contrat, date_debut, Date_fin, salaire_annuel, Id_equipe, ID_coureur) VALUES
 (1, '2025-01-01', '2028-12-31', 800000.00, 1, 1),   -- Clément Loy (WT)
 (2, '2025-01-01', '2028-12-31', 650000.00, 1, 2),   -- Nathan Laffez (WT)
 (3, '2024-01-01', '2030-12-31', 6000000.00, 1, 3),  -- Pogacar
@@ -355,7 +353,7 @@ INSERT INTO Contrat (id_contrat, date_debut, Date_fin, salaire_annuel, Id_equipe
 (55, '2024-01-01', '2026-12-31', 350000.00, 5, 55);
 
 -- 12. Table Dossier_Medical (55 Dossiers Médicaux)
-INSERT INTO Dossier_Medical (ID_dossier, Date_examen, VO2max, Poids, Blessure, Date_reprise, ID_coureur_) VALUES
+INSERT INTO Dossier_Medical (ID_dossier, Date_examen, VO2max, Poids, Blessure, Date_reprise, ID_coureur) VALUES
 (1, '2026-01-10', 82.00, 68, 'Aucune', NULL, 1),
 (2, '2026-01-10', 84.50, 61, 'Aucune', NULL, 2),
 (3, '2026-01-11', 89.50, 66, 'Aucune', NULL, 3),
@@ -413,65 +411,65 @@ INSERT INTO Dossier_Medical (ID_dossier, Date_examen, VO2max, Poids, Blessure, D
 (55, '2026-02-06', 69.00, 55, 'Aucune', NULL, 55);
 
 -- 13. Table Seance (55 Séances d'entraînement)
-INSERT INTO Seance (Id_seance, date_seance, puissance_moyenne, duree_seance, distance, BPM, ID_coureur_) VALUES
-('S01', '2026-02-10', 270, '04:00:00', 130, 140, 1),
-('S02', '2026-02-10', 255, '04:30:00', 140, 142, 2),
-('S03', '2026-02-10', 290, '05:00:00', 160, 138, 3),
-('S04', '2026-02-10', 285, '05:00:00', 160, 136, 4),
-('S05', '2026-02-10', 300, '02:00:00', 80, 145, 5),
-('S06', '2026-02-10', 320, '01:30:00', 40, 155, 6),
-('S07', '2026-02-10', 315, '02:00:00', 65, 150, 7),
-('S08', '2026-02-10', 250, '03:00:00', 80, 148, 8),
-('S09', '2026-02-10', 260, '03:30:00', 110, 142, 9),
-('S10', '2026-02-10', 245, '04:00:00', 120, 139, 10),
-('S11', '2026-02-10', 280, '03:00:00', 105, 141, 11),
-('S12', '2026-02-10', 275, '03:00:00', 105, 140, 12),
-('S13', '2026-02-10', 265, '04:30:00', 145, 135, 13),
-('S14', '2026-02-10', 240, '05:00:00', 150, 133, 14),
-('S15', '2026-02-10', 270, '02:30:00', 85, 144, 15),
-('S16', '2026-02-10', 310, '01:45:00', 75, 158, 16),
-('S17', '2026-02-10', 330, '01:30:00', 65, 160, 17),
-('S18', '2026-02-10', 305, '02:00:00', 80, 155, 18),
-('S19', '2026-02-10', 260, '03:45:00', 125, 145, 19),
-('S20', '2026-02-10', 255, '04:15:00', 135, 138, 20),
-('S21', '2026-02-10', 210, '04:00:00', 115, 142, 21),
-('S22', '2026-02-10', 205, '03:30:00', 105, 140, 22),
-('S23', '2026-02-10', 220, '02:00:00', 65, 148, 23),
-('S24', '2026-02-10', 200, '03:45:00', 110, 145, 24),
-('S25', '2026-02-10', 195, '04:00:00', 115, 141, 25),
-('S26', '2026-02-10', 190, '04:15:00', 120, 139, 26),
-('S27', '2026-02-10', 215, '03:00:00', 95, 144, 27),
-('S28', '2026-02-10', 225, '02:30:00', 80, 146, 28),
-('S29', '2026-02-10', 230, '01:45:00', 65, 155, 29),
-('S30', '2026-02-10', 210, '02:45:00', 90, 143, 30),
-('S31', '2026-02-10', 185, '04:30:00', 125, 138, 31),
-('S32', '2026-02-10', 220, '02:00:00', 70, 150, 32),
-('S33', '2026-02-10', 265, '03:30:00', 115, 146, 33),
-('S34', '2026-02-10', 275, '02:30:00', 85, 148, 34),
-('S35', '2026-02-10', 245, '04:00:00', 125, 140, 35),
-('S36', '2026-02-10', 250, '04:15:00', 130, 141, 36),
-('S37', '2026-02-10', 240, '04:30:00', 135, 139, 37),
-('S38', '2026-02-10', 280, '02:00:00', 75, 152, 38),
-('S39', '2026-02-10', 290, '01:30:00', 50, 155, 39),
-('S40', '2026-02-10', 300, '01:45:00', 65, 158, 40),
-('S41', '2026-02-10', 260, '03:00:00', 100, 145, 41),
-('S42', '2026-02-10', 255, '03:45:00', 120, 142, 42),
-('S43', '2026-02-10', 235, '03:00:00', 95, 145, 43),
-('S44', '2026-02-10', 280, '01:30:00', 40, 160, 44),
-('S45', '2026-02-10', 250, '02:30:00', 85, 148, 45),
-('S46', '2026-02-10', 245, '03:15:00', 105, 144, 46),
-('S47', '2026-02-10', 260, '02:00:00', 50, 150, 47),
-('S48', '2026-02-10', 240, '03:30:00', 110, 142, 48),
-('S49', '2026-02-10', 255, '02:45:00', 90, 146, 49),
-('S50', '2026-02-10', 210, '02:00:00', 45, 155, 50),
-('S51', '2026-02-10', 310, '01:45:00', 40, 165, 51),
-('S52', '2026-02-10', 320, '01:30:00', 35, 168, 52),
-('S53', '2026-02-10', 220, '01:45:00', 40, 158, 53),
-('S54', '2026-02-10', 300, '01:00:00', 25, 170, 54),
-('S55', '2026-02-10', 240, '01:00:00', 25, 165, 55);
+INSERT INTO Seance (Id_seance, date_seance, puissance_moyenne, duree_seance, distance, BPM, ID_coureur) VALUES
+('01', '2026-02-10', 270, '04:00:00', 130, 140, 1),
+('02', '2026-02-10', 255, '04:30:00', 140, 142, 2),
+('03', '2026-02-10', 290, '05:00:00', 160, 138, 3),
+('04', '2026-02-10', 285, '05:00:00', 160, 136, 4),
+('05', '2026-02-10', 300, '02:00:00', 80, 145, 5),
+('06', '2026-02-10', 320, '01:30:00', 40, 155, 6),
+('07', '2026-02-10', 315, '02:00:00', 65, 150, 7),
+('08', '2026-02-10', 250, '03:00:00', 80, 148, 8),
+('09', '2026-02-10', 260, '03:30:00', 110, 142, 9),
+('10', '2026-02-10', 245, '04:00:00', 120, 139, 10),
+('11', '2026-02-10', 280, '03:00:00', 105, 141, 11),
+('12', '2026-02-10', 275, '03:00:00', 105, 140, 12),
+('13', '2026-02-10', 265, '04:30:00', 145, 135, 13),
+('14', '2026-02-10', 240, '05:00:00', 150, 133, 14),
+('15', '2026-02-10', 270, '02:30:00', 85, 144, 15),
+('16', '2026-02-10', 310, '01:45:00', 75, 158, 16),
+('17', '2026-02-10', 330, '01:30:00', 65, 160, 17),
+('18', '2026-02-10', 305, '02:00:00', 80, 155, 18),
+('19', '2026-02-10', 260, '03:45:00', 125, 145, 19),
+('20', '2026-02-10', 255, '04:15:00', 135, 138, 20),
+('21', '2026-02-10', 210, '04:00:00', 115, 142, 21),
+('22', '2026-02-10', 205, '03:30:00', 105, 140, 22),
+('23', '2026-02-10', 220, '02:00:00', 65, 148, 23),
+('24', '2026-02-10', 200, '03:45:00', 110, 145, 24),
+('25', '2026-02-10', 195, '04:00:00', 115, 141, 25),
+('26', '2026-02-10', 190, '04:15:00', 120, 139, 26),
+('27', '2026-02-10', 215, '03:00:00', 95, 144, 27),
+('28', '2026-02-10', 225, '02:30:00', 80, 146, 28),
+('29', '2026-02-10', 230, '01:45:00', 65, 155, 29),
+('30', '2026-02-10', 210, '02:45:00', 90, 143, 30),
+('31', '2026-02-10', 185, '04:30:00', 125, 138, 31),
+('32', '2026-02-10', 220, '02:00:00', 70, 150, 32),
+('33', '2026-02-10', 265, '03:30:00', 115, 146, 33),
+('34', '2026-02-10', 275, '02:30:00', 85, 148, 34),
+('35', '2026-02-10', 245, '04:00:00', 125, 140, 35),
+('36', '2026-02-10', 250, '04:15:00', 130, 141, 36),
+('37', '2026-02-10', 240, '04:30:00', 135, 139, 37),
+('38', '2026-02-10', 280, '02:00:00', 75, 152, 38),
+('39', '2026-02-10', 290, '01:30:00', 50, 155, 39),
+('40', '2026-02-10', 300, '01:45:00', 65, 158, 40),
+('41', '2026-02-10', 260, '03:00:00', 100, 145, 41),
+('42', '2026-02-10', 255, '03:45:00', 120, 142, 42),
+('43', '2026-02-10', 235, '03:00:00', 95, 145, 43),
+('44', '2026-02-10', 280, '01:30:00', 40, 160, 44),
+('45', '2026-02-10', 250, '02:30:00', 85, 148, 45),
+('46', '2026-02-10', 245, '03:15:00', 105, 144, 46),
+('47', '2026-02-10', 260, '02:00:00', 50, 150, 47),
+('48', '2026-02-10', 240, '03:30:00', 110, 142, 48),
+('49', '2026-02-10', 255, '02:45:00', 90, 146, 49),
+('50', '2026-02-10', 210, '02:00:00', 45, 155, 50),
+('51', '2026-02-10', 310, '01:45:00', 40, 165, 51),
+('52', '2026-02-10', 320, '01:30:00', 35, 168, 52),
+('53', '2026-02-10', 220, '01:45:00', 40, 158, 53),
+('54', '2026-02-10', 300, '01:00:00', 25, 170, 54),
+('55', '2026-02-10', 240, '01:00:00', 25, 165, 55);
 
 -- 14. Table Participer_Stage (55 Participations aux stages)
-INSERT INTO Participer_Stage (ID_coureur_, ID_stage) VALUES
+INSERT INTO Participer_Stage (ID_coureur, ID_stage) VALUES
 (1, 2), (2, 1), (3, 1), (4, 1), (5, 2), (6, 2), (7, 2), (8, 5), (9, 2), (10, 1),
 (11, 2), (12, 2), (13, 1), (14, 1), (15, 2), (16, 2), (17, 2), (18, 2), (19, 2), (20, 1),
 (21, 4), (22, 4), (23, 4), (24, 4), (25, 4), (26, 4), (27, 4), (28, 4), (29, 4), (30, 4),
@@ -516,7 +514,7 @@ INSERT INTO Necessiter (ID_course, ID_vehicule) VALUES
 (9, 7);
 
 -- 18. Table s_inscrit (10 inscriptions aux épreuves)
-INSERT INTO s_inscrit (ID_course, Id_equipe, Date_inscription, Statut_invité_automatique_WT_, Directeur_sportif_responsable) VALUES
+INSERT INTO s_inscrit (ID_course, Id_equipe, Date_inscription, Statut_invite_automatique_WT, Directeur_sportif_responsable) VALUES
 (1, 1, '2026-01-10', 'Automatique WT', 'Mathieu Leclerc'),
 (2, 1, '2026-01-15', 'Automatique WT', 'Mathieu Leclerc'),
 (3, 1, '2026-02-01', 'Automatique WT', 'Mathieu Leclerc'),
@@ -560,7 +558,7 @@ INSERT INTO Mobiliser (ID_course, ID_staff, ID_role) VALUES
 (1, 8, 7);  -- Moreau au TDF (Kiné)
 
 -- 21. Table Affecter (55 vélos affectés à l'année aux 55 coureurs)
-INSERT INTO Affecter (ID_coureur_, ID_velo, date_afffectation, Date_restitutions) VALUES
+INSERT INTO Affecter (ID_coureur, ID_velo, date_affectation, Date_restitutions) VALUES
 (1, 1, '2026-01-01', '2026-12-31'),
 (2, 2, '2026-01-01', '2026-12-31'),
 (3, 3, '2026-01-01', '2026-12-31'),
@@ -618,7 +616,7 @@ INSERT INTO Affecter (ID_coureur_, ID_velo, date_afffectation, Date_restitutions
 (55, 55, '2026-01-01', '2026-12-31');
 
 -- 22. Table Participer (55 Résultats en course)
-INSERT INTO Participer (ID_coureur_, ID_course, Classement_final, statut) VALUES
+INSERT INTO Participer (ID_coureur, ID_course, Classement_final, statut) VALUES
 (1, 10, 15, 'Terminé'),    -- Loy à LBL
 (2, 1, 18, 'Terminé'),     -- Laffez au TDF
 (3, 1, 1, 'Terminé'),      -- Pogacar gagne le TDF
@@ -694,7 +692,7 @@ INSERT INTO Installation (ID_velo, ID_composant, Date_installation, Date_retrait
 (54, 6, '2026-01-01', NULL);
 
 -- 24. Table Suivre (15 Interventions staff sur les coureurs)
-INSERT INTO Suivre (ID_coureur_, ID_staff, Date_intervention, Type_intervention, Description) VALUES
+INSERT INTO Suivre (ID_coureur, ID_staff, Date_intervention, Type_intervention, Description) VALUES
 (1, 6, '2026-02-15', 'Entraînement', 'Analyse PMA'),
 (2, 7, '2026-03-01', 'Médical', 'Bilan sanguin'),
 (3, 8, '2026-07-15', 'Massage', 'Récupération TDF'),
@@ -712,7 +710,7 @@ INSERT INTO Suivre (ID_coureur_, ID_staff, Date_intervention, Type_intervention,
 (55, 7, '2026-01-15', 'Médical', 'Test PCR');
 
 -- 25. Table Intervienir (15 interventions mécaniques)
-INSERT INTO Intervienir (ID_velo, ID_staff, date_intervention, Type_intervention, pieces_changees) VALUES
+INSERT INTO Intervenir (ID_velo, ID_staff, date_intervention, Type_intervention, pieces_changees) VALUES
 (1, 4, '2026-06-01', 'Maintenance', 'Chaîne'),
 (2, 5, '2026-04-01', 'Réparation', 'Guidoline'),
 (6, 4, '2026-02-15', 'Maintenance', 'Plaquettes de frein CX'),
