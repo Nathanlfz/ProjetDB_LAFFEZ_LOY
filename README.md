@@ -851,7 +851,7 @@ Voici notre travail final avec que le MCD réalisé.
 <img width="2102" height="1144" alt="image" src="https://github.com/user-attachments/assets/1fb5b843-67b2-447a-85ee-c4afd38ff69b" />
 
 Notre MCD comporte comme demandé une association ternaire, une association récursive ainsi qu’une entité faible dépendante d’une entité forte.
-
+        
 
 # Voici notre MLD généré depuis looping 
 ```
