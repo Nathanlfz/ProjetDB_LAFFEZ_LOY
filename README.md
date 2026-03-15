@@ -848,7 +848,7 @@ Lors de l’échange avec l’IA, les règles proposées restaient trop généra
 Le dictionnaire de données n’était pas assez fourni pour obtenir un modèle comme on le voulait avec tous les aspects que l'on voulait traité. Nous nous sommes donc permis de prendre quelques libertés en ajoutant certaines règles métier et complétant le dictionnaire avec des attributs supplémentaires afin de rendre le modèle plus complet et plus cohérent.
 
 Voici notre travail final avec que le MCD réalisé.
-<img width="2102" height="1144" alt="image" src="https://github.com/user-attachments/assets/1fb5b843-67b2-447a-85ee-c4afd38ff69b" />
+<img width="2102" height="1144" alt="image" src="MCDIMG.png" />
 
 Notre MCD comporte comme demandé une association ternaire, une association récursive ainsi qu’une entité faible dépendante d’une entité forte.
         
